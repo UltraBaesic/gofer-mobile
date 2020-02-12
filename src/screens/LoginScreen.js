@@ -18,7 +18,7 @@ const RegisterScreen = ({ navigation }) => {
         </TouchableOpacity>
         </View>
         <View style={ styles.container }>
-          <Text style={ styles.bigText }>Welcome Back,</Text>
+          <Text style={ styles.bigText }>Welcome Back</Text>
           <Text style={ styles.smallText }>Sign in to continue</Text>
         </View>
         <View style={ styles.formContainer }>
@@ -38,10 +38,13 @@ const RegisterScreen = ({ navigation }) => {
               style={ styles.formInput }
             >
             </TextInput>
-            <Text style={ styles.forgotPassword }> Forgot Password?</Text>
+            <TouchableOpacity onPress={() => navigation.navigate('Forgot')}>
+              <Text style={ styles.forgotPassword }> Forgot Password?</Text>
+            </TouchableOpacity>
           </View>
           <TouchableOpacity 
              style={ styles.submitButton }
+             onPress={() => navigation.navigate('Feed')}
           >
             <Text style={ styles.submitText }>Login</Text>
           </TouchableOpacity>

@@ -24,7 +24,7 @@ const LoginScreen = ({ navigation}) => {
       <View style={ styles.formContainer }>
         <View style={ styles.formItems }>
           <View style={ styles.firstInput}>
-            <Text style={styles.formText }>Name</Text>
+            <Text style={styles.formText }>First Name</Text>
             <TextInput
               placeholder='First Name'
               style={ styles.formInput }
@@ -32,7 +32,7 @@ const LoginScreen = ({ navigation}) => {
             </TextInput>
             </View>
             <View style={ styles.firstInput}>
-            <Text></Text>
+            <Text style={styles.formText }>Last Name</Text>
               <TextInput
               placeholder='Last Name'
               style={ styles.formInput }
@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
   },
   formInput: {
     borderColor: '#BEBEBE',
-    paddingHorizontal: 30,
+    paddingHorizontal: 33,
     paddingVertical: 10,
     borderWidth: 1,
     marginTop: 5,
@@ -154,7 +154,8 @@ const styles = StyleSheet.create({
   },
   formItems: {
     flexDirection: 'row',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    width: 300
   },
   firstInput: {
     paddingRight: 10,
