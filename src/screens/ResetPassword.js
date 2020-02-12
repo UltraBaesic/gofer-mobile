@@ -1,7 +1,7 @@
 import React from 'react'
 import { Image, View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView } from 'react-native'
 
-const ResetPassword = () => {
+const ResetPassword = ({ navigation }) => {
   return (
     <ScrollView
       showsVerticalScrollIndicator={false}
@@ -37,7 +37,7 @@ const ResetPassword = () => {
             >
             </TextInput>
           </View>
-          <View style={{ paddingHorizontal: 30, marginTop: 40 }}>
+          <View style={{ paddingHorizontal: 30, marginTop: 70 }}>
             <TouchableOpacity 
               style={ styles.submitButton }
             >
