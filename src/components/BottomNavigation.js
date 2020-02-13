@@ -3,35 +3,40 @@ import { View, Text, Image, TouchableWithoutFeedback, StyleSheet } from 'react-n
 
 const ButtomNavigation = () => {
   return (
-    <View>
+    <View style={{ backgroundColor: '#ffffff'}}>
       <View style={ styles.buttonNavigation }>
         <TouchableWithoutFeedback onPress={() => console.log('Button Clicked')}>
           <View style={ styles.blueContainer}>
             <Image
               source={ require('../../assets/button-plus.png') }
-              style={ styles.buttonIcon}
+              style={ styles.buttonIcon }
             ></Image>
           </View>
         </TouchableWithoutFeedback>
       </View>
-      <View style={ styles.bottomView }>
-        <View style={{ flexDirection: 'row', marginTop: -5 }}>
-          <View style={{ marginTop: 5 }}>
-            <Image
-              source={ require('../../assets/user.png')}
-              style={ styles.navIcons }
-            ></Image>
-            <Text style={ styles.iconText }>Account</Text>
+      <View style={{ position: 'relative'}}>
+        <Image
+          source={ require('../../assets/bottom-nav.png')}
+          style={ styles.bottomView }
+        ></Image>
+        <View>
+          <View style={{ flexDirection: 'row', marginLeft: 10, position: 'absolute'}}>
+            <View>
+              <Image
+                source={ require('../../assets/user.png')}
+                style={ styles.navIcons }
+              ></Image>
+              <Text style={ styles.iconText }>Account</Text>
+            </View>
+            <View style={{ marginLeft: 33 }}>
+              <Image
+                source={ require('../../assets/wallet.png')}
+                style={ styles.navIcons }
+              ></Image>
+              <Text style={ styles.iconText }>Wallet</Text>
+            </View>
           </View>
-          <View style={{ marginTop: 5, marginLeft: 25 }}>
-            <Image
-              source={ require('../../assets/wallet.png')}
-              style={ styles.navIcons }
-            ></Image>
-            <Text style={ styles.iconText }>Wallet</Text>
-          </View>
-        </View>
-        <View style={{ flexDirection: 'row', marginTop: -5 }}>
+          <View style={{ flexDirection: 'row', marginTop: -5, alignSelf: 'flex-end' }}>
           <View style={{ marginTop: 5 }}>
             <Image
               source={ require('../../assets/future.png')}
@@ -39,13 +44,14 @@ const ButtomNavigation = () => {
             ></Image>
             <Text style={ styles.iconText }>Errands</Text>
           </View>
-          <View style={{ marginTop: 5, marginLeft: 25 }}>
+          <View style={{ marginTop: 5, marginLeft: 25, marginRight: 10 }}>
             <Image
               source={ require('../../assets/bell.png')}
               style={ styles.navIcons }
             ></Image>
-            <Text style={ styles.iconText }>Notifs</Text>
+            <Text style={ styles.iconText }>Notifications</Text>
           </View>
+        </View>
         </View>
       </View>
     </View>
@@ -59,7 +65,7 @@ const styles = StyleSheet.create({
     width: 70,
     height: 70,
     borderRadius: 35,
-    bottom: 35,
+    bottom: 25,
     zIndex: 10
   },
   blueContainer: {
@@ -70,38 +76,16 @@ const styles = StyleSheet.create({
     position: 'relative'
   },
   buttonIcon: {
-    width: 30,
-    height: 30,
+    width: 25,
+    height: 25,
     position: 'absolute',
-    left: 20,
-    top: 20
+    left: 22,
+    top: 22
   },
   bottomView: {
     position: 'absolute',
-    backgroundColor: '#ffffff',
-    shadowOpacity: 0.3,
-    shadowRadius: 3,
-    shadowOffset: {
-      height: 3,
-      width: 3
-    },
-    paddingBottom: 12,
-    bottom: 0,
-    height: 66,
     width: '100%',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingVertical: 15,
-    paddingHorizontal: 15,
-    borderTopColor: '#D3D3D3',
-    borderTopWidth: 1,
-    shadowColor: '#000000',
-    shadowOffset: {
-      width: 0,
-      height: 3
-    },
-    shadowRadius: 5,
-    shadowOpacity: 1.0,
+    bottom: -16
   },
   navIcons: {
     width: 25,
@@ -110,7 +94,7 @@ const styles = StyleSheet.create({
   },
   iconText: {
     color: '#909090',
-    fontSize: 12,
+    fontSize: 10,
     paddingBottom: 10
   }
 })

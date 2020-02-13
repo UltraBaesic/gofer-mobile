@@ -15,13 +15,13 @@ const FeedScreen = () => {
         <View style={ styles.imageHeader}>
           <Image
             source={ require('../../assets/menu.png') }
-            style={{ width: 27, height: 27 }}
+            style={{ width: 22, height: 22, marginTop: 2.3 }}
           ></Image>
           <Text style={ styles.logoText }>Gofer</Text>
         </View>
         <Image
           source={ require('../../assets/search.png') }
-          style={{ width: 27, height: 27 }}
+          style={{ width: 22, height: 22, marginTop: 2 }}
         ></Image>
       </View>
       <Grid style={{ marginBottom: 70 }}>
@@ -315,7 +315,7 @@ const FeedScreen = () => {
         </Row>
       </Grid>
     </ScrollView>
-    <View>
+      <View>
         <BottomNavigator />
       </View>
     </View>
