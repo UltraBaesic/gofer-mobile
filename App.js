@@ -1,30 +1,28 @@
-import { createAppContainer } from 'react-navigation';
-import { createStackNavigator } from 'react-navigation-stack';
-import HomeScreen from "./src/screens/HomeScreen";
-import WelcomeScreen from './src/screens/WelcomeScreen';
-import RegisterScreen from './src/screens/RegisterScreen';
-import LoginScreen from './src/screens/LoginScreen';
-import FeedScreen from './src/screens/FeedScreen';
-import ForgotPassword from './src/screens/ForgotPassword';
-import ResetPassword from './src/screens/ResetPassword';
+import React, { useState } from 'react'
+import * as Font from 'expo-font'
+import { AppLoading } from 'expo'
+import Navigator from  './src/routes/index'
 
-const navigator = createStackNavigator(
-  {
-    Home: HomeScreen,
-    Welcome: WelcomeScreen,
-    Register: RegisterScreen,
-    Login: LoginScreen,
-    Feed: FeedScreen,
-    Forgot: ForgotPassword,
-    Reset: ResetPassword
-  },
-  {
-    initialRouteName: "Home",
-    headerMode: null,
-    defaultNavigationOptions: {
-      title: "App"
-    }
+const getFonts = () => Font.loadAsync({
+  'muli-regular': require('./assets/fonts/Muli-Regular.ttf'),
+  'muli-semi': require('./assets/fonts/Muli-SemiBold.ttf'),
+  'muli-medium': require('./assets/fonts/Muli-Medium.ttf'),
+  'muli-bold': require('./assets/fonts/Muli-Bold.ttf')
+})
+
+export default function App() {
+  const [ fontsLoaded, setFontsLoaded ] = useState(false)
+
+  if(fontsLoaded) {
+    return (
+      <Navigator />
+    )
+  } else {
+    return (
+      <AppLoading
+        startAsync={ getFonts }
+        onFinish={() => setFontsLoaded(true)}
+      ></AppLoading>
+    )
   }
-);
-
-export default createAppContainer(navigator);
+}

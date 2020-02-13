@@ -71,11 +71,13 @@ const styles = StyleSheet.create({
   },
   registerText: {
     color: "#ffffff",
-    fontSize: 20
+    fontSize: 20,
+    fontFamily: 'muli-regular'
   },
   loginText: {
     color: "#0086B9",
-    fontSize: 20
+    fontSize: 20,
+    fontFamily: 'muli-regular'
   }
 })
 

@@ -41,18 +41,8 @@ const styles = StyleSheet.create({
   text: {
     color: '#ffffff',
     fontSize: 40,
-    marginVertical: 10
-  },
-  logoButton: {
-    padding: 20,
-    backgroundColor: "transparent",
-    borderColor: "#ffffff",
-    borderWidth: 1,
-    borderRadius: 20,
-    marginVertical: 20
-  },
-  logoText: {
-    color: "#ffffff"
+    marginVertical: 10,
+    fontFamily: 'muli-medium'
   }
 });
 
