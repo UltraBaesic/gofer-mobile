@@ -7,6 +7,7 @@ import LoginScreen from '../screens/LoginScreen';
 import FeedScreen from '../screens/FeedScreen';
 import ForgotPassword from '../screens/ForgotPassword';
 import ResetPassword from '../screens/ResetPassword';
+import PostErrands from '../screens/PostErrands';
 
 const Navigator = createStackNavigator(
   {
@@ -16,7 +17,8 @@ const Navigator = createStackNavigator(
     Login: LoginScreen,
     Feed: FeedScreen,
     Forgot: ForgotPassword,
-    Reset: ResetPassword
+    Reset: ResetPassword,
+    Errand: PostErrands
   },
   {
     initialRouteName: "Home",

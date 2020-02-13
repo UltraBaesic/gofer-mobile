@@ -45,7 +45,8 @@ const ForgotPassword = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   body: {
-    backgroundColor: '#ffffff'
+    backgroundColor: '#ffffff',
+    fontFamily: 'muli-regular'
   },
   header: {
     backgroundColor: '#ffffff',

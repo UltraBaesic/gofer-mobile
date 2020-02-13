@@ -1,29 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { View, ScrollView, Text, Image, StyleSheet, TouchableOpacity, TouchableWithoutFeedback } from 'react-native'
 import { Col, Row, Grid } from 'react-native-easy-grid'
-import BottomNavigator from '../components/BottomNavigation'
+import Header from '../components/Header'
 
-const FeedScreen = () => {
+const FeedScreen = ({ navigation }) => {
+  useEffect(() => {
+
+  })
 
   return (
-    <View style={{ flex: 1 }}>
+    <View>
     <ScrollView
       showsVerticalScrollIndicator={false}
       style={ styles.body }
     >
-      <View style={ styles.header }>
-        <View style={ styles.imageHeader}>
-          <Image
-            source={ require('../../assets/menu.png') }
-            style={{ width: 22, height: 22, marginTop: 2.3 }}
-          ></Image>
-          <Text style={ styles.logoText }>Gofer</Text>
-        </View>
-        <Image
-          source={ require('../../assets/search.png') }
-          style={{ width: 22, height: 22, marginTop: 2 }}
-        ></Image>
-      </View>
+      <Header navigation={navigation}></Header>
       <Grid style={{ marginBottom: 70 }}>
         <Row style={ styles.mainContainer }>
           <Col style={ styles.smallCol }>
@@ -85,6 +76,10 @@ const FeedScreen = () => {
                 <Text style={ styles.time }>2 hrs to go</Text>
               </View>
               <View style={ styles.textContainer }>
+                <Image
+                  source={ require('../../assets/cardImage1.jpg')}
+                  style={ styles.cardImage }
+                ></Image>
                 <Text style={ styles.avatarName }>I am in Ajah, i need someone to help me pick up my clothes from my friend in Ikeja Along before 6:00pm today.</Text>
               </View>
               <View style={ styles.more }>
@@ -157,6 +152,10 @@ const FeedScreen = () => {
                 <Text style={ styles.time }>2 hrs to go</Text>
               </View>
               <View style={ styles.textContainer }>
+              <Image
+                source={ require('../../assets/cardImage2.jpg')}
+                style={ styles.cardImage }
+              ></Image>
                 <Text style={ styles.avatarName }>I am in Ajah, i need someone to help me pick up my clothes from my friend in Ikeja Along before 6:00pm today.</Text>
               </View>
               <View style={ styles.more }>
@@ -229,6 +228,10 @@ const FeedScreen = () => {
                 <Text style={ styles.time }>2 hrs to go</Text>
               </View>
               <View style={ styles.textContainer }>
+              <Image
+                  source={ require('../../assets/cardImage3.jpg')}
+                  style={ styles.cardImage }
+                ></Image>
                 <Text style={ styles.avatarName }>I am in Ajah, i need someone to help me pick up my clothes from my friend in Ikeja Along before 6:00pm today.</Text>
               </View>
               <View style={ styles.more }>
@@ -316,33 +319,67 @@ const FeedScreen = () => {
       </Grid>
     </ScrollView>
       <View>
-        <BottomNavigator />
+        <View style={{ marginTop: -120 }}>
+        <View style={ styles.buttonNavigation }>
+          <View>
+            <TouchableOpacity style={ styles.blueContainer} onPress={() => navigation.navigate('Errand')}>
+              <Image
+                source={ require('../../assets/button-plus.png') }
+                style={ styles.buttonIcon }
+              ></Image>
+            </TouchableOpacity>
+          </View>
+        </View>
+        <View>
+          <Image
+            source={ require('../../assets/bottom-nav.png')}
+            style={ styles.bottomView }
+          ></Image>
+          <View>
+            <View style={{ flexDirection: 'row', marginLeft: 10, position: 'absolute', bottom: 30 }}>
+              <View>
+                <Image
+                  source={ require('../../assets/user.png')}
+                  style={ styles.navIcons }
+                ></Image>
+                <Text style={ styles.iconText }>Account</Text>
+              </View>
+              <View style={{ marginLeft: 33 }}>
+                <Image
+                  source={ require('../../assets/wallet.png')}
+                  style={ styles.navIcons }
+                ></Image>
+                <Text style={ styles.iconText }>Wallet</Text>
+              </View>
+            </View>
+            <View style={{ flexDirection: 'row', marginTop: -5, alignSelf: 'flex-end', position: 'absolute', bottom: 30 }}>
+            <View style={{ marginTop: 5 }}>
+              <Image
+                source={ require('../../assets/future.png')}
+                style={ styles.navIcons }
+              ></Image>
+              <Text style={ styles.iconText }>Errands</Text>
+            </View>
+            <View style={{ marginTop: 5, marginLeft: 25, marginRight: 10 }}>
+              <Image
+                source={ require('../../assets/bell.png')}
+                style={ styles.navIcons }
+              ></Image>
+              <Text style={ styles.iconText }>Notifications</Text>
+            </View>
+          </View>
+          </View>
+        </View>
       </View>
     </View>
+  </View>
   )
 }
 
 const styles = StyleSheet.create({
   body: {
-    backgroundColor: '#FDFDFD'
-  },
-  header: {
-    paddingVertical: 10,
-    backgroundColor: '#ffffff',
-    paddingTop: 40,
-    paddingHorizontal: 20,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    shadowColor: '#000000',
-    shadowOffset: {
-      width: 0,
-      height: 3
-    },
-    shadowRadius: 5,
-    shadowOpacity: 1.0,
-    borderBottomColor: '#d3d3d3',
-    borderBottomWidth: 1
-
+    backgroundColor: '#FDFDFD',
+    fontFamily: 'muli-regular'
   },
   imageHeader: {
     flexDirection: 'row',
@@ -352,7 +389,8 @@ const styles = StyleSheet.create({
   logoText: {
     fontSize: 25,
     color: '#0086B9',
-    marginTop: -4
+    marginTop: -4,
+    fontFamily: 'muli-regular'
   },
   mainContainer: {
     paddingHorizontal: 10,
@@ -395,13 +433,61 @@ const styles = StyleSheet.create({
     flexDirection: 'row'
   },
   smallText:{
-    color: '#0086B9'
+    color: '#0086B9',
+    fontFamily: 'muli-regular'
   },
   avatarName: {
-    color: '#6B6B6B'
+    color: '#6B6B6B',
+    fontFamily: 'muli-regular'
   },
   time: {
-    color: '#BDBDBD'
+    color: '#BDBDBD',
+    fontFamily: 'muli-regular'
+  },
+  cardImage: {
+    width: 260,
+    height: 140,
+    resizeMode: 'cover'
+  },
+  buttonNavigation: {
+    position: 'absolute',
+    alignSelf: 'center',
+    width: 70,
+    height: 70,
+    borderRadius: 35,
+    bottom: 40,
+    zIndex: 40
+  },
+  blueContainer: {
+    backgroundColor: '#0086B9',
+    width: 68,
+    height: 68,
+    borderRadius: 100,
+    position: 'relative'
+  },
+  buttonIcon: {
+    width: 25,
+    height: 25,
+    position: 'absolute',
+    left: 20,
+    top: 20
+  },
+  bottomView: {
+    position: 'relative',
+    width: '100%',
+    height: 120,
+    marginTop: 30
+  },
+  navIcons: {
+    width: 25,
+    height: 25,
+    alignSelf: 'center'
+  },
+  iconText: {
+    color: '#909090',
+    fontSize: 10,
+    paddingBottom: 10,
+    fontFamily: 'muli-regular'
   }
   
 })

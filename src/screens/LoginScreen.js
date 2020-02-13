@@ -101,12 +101,14 @@ const styles = StyleSheet.create({
   },
   bigText: {
     fontSize: 30,
-    color: '#6B6B6B'
+    color: '#6B6B6B',
+    fontFamily: 'muli-regular'
   },
   smallText: {
     color: '#BEBEBE',
     fontSize: 17,
-    paddingTop: 5
+    paddingTop: 5,
+    fontFamily: 'muli-regular'
   },
   formContainer: {
     paddingHorizontal: 30,
@@ -122,7 +124,8 @@ const styles = StyleSheet.create({
   },
   formText: {
     color: '#6B6B6B',
-    fontSize: 17
+    fontSize: 17,
+    fontFamily: 'muli-regular'
   },
   secondInput: {
     marginTop: 30
@@ -131,7 +134,8 @@ const styles = StyleSheet.create({
     textAlign: 'right',
     color: '#4965F4',
     fontSize: 14,
-    marginTop: 10
+    marginTop: 10,
+    fontFamily: 'muli-regular'
   },
   submitButton: {
     marginTop: 20,
@@ -151,7 +155,8 @@ const styles = StyleSheet.create({
   },
   submitText: {
     color: '#ffffff',
-    fontSize: 18
+    fontSize: 18,
+    fontFamily: 'muli-regular'
   },
   socialText: {
     justifyContent: 'space-between',
@@ -166,7 +171,8 @@ const styles = StyleSheet.create({
     width: 92
   },
   horizontalText: {
-    color: '#515151'
+    color: '#515151',
+    fontFamily: 'muli-regular'
   },
   socialContainer: {
     justifyContent: 'space-between',
@@ -178,17 +184,20 @@ const styles = StyleSheet.create({
     paddingVertical: 30,
     justifyContent: 'center',
     alignItems: 'center',
-    flexDirection: 'row'
+    flexDirection: 'row',
+    fontFamily: 'muli-regular'
   },
   user: {
    paddingRight: 10,
    color: '#707070',
-   fontSize: 16
+   fontSize: 16,
+   fontFamily: 'muli-regular'
   },
   register: {
     fontSize: 16,
     color: '#637BF5',
-    marginLeft: -6
+    marginLeft: -6,
+    fontFamily: 'muli-regular'
   }
 })
 

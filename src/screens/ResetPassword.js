@@ -70,12 +70,14 @@ const styles = StyleSheet.create({
   },
   bigText: {
     fontSize: 32,
-    color: '#6B6B6B'
+    color: '#6B6B6B',
+    fontFamily: 'muli-regular'
   },
   smallText: {
     color: '#BEBEBE',
     fontSize: 17,
-    paddingTop: 5
+    paddingTop: 5,
+    fontFamily: 'muli-regular'
   },
   formContainer: {
     paddingHorizontal: 30,
@@ -91,7 +93,8 @@ const styles = StyleSheet.create({
   },
   formText: {
     color: '#6B6B6B',
-    fontSize: 17
+    fontSize: 17,
+    fontFamily: 'muli-regular'
   },
   submitButton: {
     marginTop: 10,
@@ -111,7 +114,8 @@ const styles = StyleSheet.create({
   submitText: {
     color: '#ffffff',
     fontSize: 18,
-    fontWeight: '600'
+    fontWeight: '600',
+    fontFamily: 'muli-regular'
   }
 })
 
