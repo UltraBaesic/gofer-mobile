@@ -133,7 +133,7 @@ export default class PostErrands extends Component {
             alignSelf: 'flex-end',
             marginRight: 30
           }}>
-            <TouchableOpacity
+            {/* <TouchableOpacity
               style={ styles.nextButton }
               onPress={() => this.buttonAction()}
             >
@@ -145,7 +145,7 @@ export default class PostErrands extends Component {
                 source={ require('../../assets/arrow.png')}
                 style={ styles.nextIcon }
               ></Image>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
           </View>
         </View>
         </View>
