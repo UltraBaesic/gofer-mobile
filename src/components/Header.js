@@ -2,11 +2,6 @@ import React from 'react'
 import { Text, View, Image, StyleSheet, TouchableWithoutFeedback } from 'react-native'
 
 const Header = ({ navigation }) => {
-
-  const openHeader = () => {
-    navigation.openDrawer()
-  }
-
   return (
     <View style={ styles.header }>
         <View style={ styles.imageHeader}>

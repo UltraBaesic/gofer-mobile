@@ -36,6 +36,7 @@ const RegisterScreen = ({ navigation }) => {
             <TextInput
               placeholder="Your Password"
               style={ styles.formInput }
+              secureTextEntry={true}
             >
             </TextInput>
             <TouchableOpacity onPress={() => navigation.navigate('Forgot')}>

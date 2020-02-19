@@ -4,9 +4,6 @@ import { Col, Row, Grid } from 'react-native-easy-grid'
 import Header from '../components/Header'
 
 const FeedScreen = ({ navigation }) => {
-  useEffect(() => {
-
-  })
 
   return (
     <View>
@@ -14,7 +11,7 @@ const FeedScreen = ({ navigation }) => {
       showsVerticalScrollIndicator={false}
       style={ styles.body }
     >
-      <Header navigation={navigation}></Header>
+      <Header navigation={ navigation }></Header>
       <Grid style={{ marginBottom: 70 }}>
         <Row style={ styles.mainContainer }>
           <Col style={ styles.smallCol }>
@@ -339,10 +336,10 @@ const FeedScreen = ({ navigation }) => {
             <View style={{ flexDirection: 'row', marginLeft: 10, position: 'absolute', bottom: 30 }}>
               <View>
                 <Image
-                  source={ require('../../assets/user.png')}
+                  source={ require('../../assets/future.png')}
                   style={ styles.navIcons }
                 ></Image>
-                <Text style={ styles.iconText }>Account</Text>
+                <Text style={ styles.iconText }>Errands</Text>
               </View>
               <View style={{ marginLeft: 33 }}>
                 <Image
@@ -355,10 +352,10 @@ const FeedScreen = ({ navigation }) => {
             <View style={{ flexDirection: 'row', marginTop: -5, alignSelf: 'flex-end', position: 'absolute', bottom: 30 }}>
             <View style={{ marginTop: 5 }}>
               <Image
-                source={ require('../../assets/future.png')}
+                source={ require('../../assets/user.png')}
                 style={ styles.navIcons }
               ></Image>
-              <Text style={ styles.iconText }>Errands</Text>
+              <Text style={ styles.iconText }>Account</Text>
             </View>
             <View style={{ marginTop: 5, marginLeft: 25, marginRight: 10 }}>
               <Image
@@ -466,11 +463,11 @@ const styles = StyleSheet.create({
     position: 'relative'
   },
   buttonIcon: {
-    width: 25,
-    height: 25,
+    width: 29,
+    height: 29,
     position: 'absolute',
     left: 20,
-    top: 20
+    top: 19
   },
   bottomView: {
     position: 'relative',
