@@ -12,6 +12,7 @@ import CategoryScreen from '../screens/CategoryScreen'
 import LocationScreen from '../screens/LocationScreen';
 import DetailsScreen from '../screens/DetailsScreen';
 import ReviewScreen from '../screens/ReviewScreen';
+import ErrandScreen from '../screens/ErrandScreen';
 
 const Navigator = createStackNavigator(
   {
@@ -22,11 +23,12 @@ const Navigator = createStackNavigator(
     Feed: FeedScreen,
     Forgot: ForgotPassword,
     Reset: ResetPassword,
-    Errand: PostErrands,
+    Post: PostErrands,
     Location: LocationScreen,
     Category: CategoryScreen,
     Details: DetailsScreen,
-    Reviews: ReviewScreen
+    Reviews: ReviewScreen,
+    Errand: ErrandScreen
   },
   {
     initialRouteName: "Home",

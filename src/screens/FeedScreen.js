@@ -319,7 +319,7 @@ const FeedScreen = ({ navigation }) => {
         <View style={{ marginTop: -120 }}>
         <View style={ styles.buttonNavigation }>
           <View>
-            <TouchableOpacity style={ styles.blueContainer} onPress={() => navigation.navigate('Errand')}>
+            <TouchableOpacity style={ styles.blueContainer} onPress={() => navigation.navigate('Post')}>
               <Image
                 source={ require('../../assets/button-plus.png') }
                 style={ styles.buttonIcon }

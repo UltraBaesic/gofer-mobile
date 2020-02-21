@@ -1,18 +1,33 @@
-import React, { Component } from 'react'
-import { View, Text, StyleSheet, Image, ScrollView, TextInput, Switch } from 'react-native'
+import React, { useState } from 'react'
+import { View, Text, StyleSheet, Image, ScrollView, TextInput, Switch, Button, TouchableWithoutFeedback } from 'react-native'
+import DateTimePickerModal from "react-native-modal-datetime-picker";
 
-export default class DetailsScreen extends Component {
-  state = {isSwitchOn: false}
+const DetailsScreen = () => {
 
-  showCalculation = () => {
-    if (this.state.isSwitchOn) {
-      console.log('this is on')
-    } else {
-      console.log('this is off')
-    }
-  }
+  const [pickerMode, setPickerMode] = useState(null);
 
-  render() {
+  const [isSwitchOn, setIsSwitchOn] = useState(false)
+
+  const showDatePicker = () => {
+    setPickerMode("date");
+  };
+
+  const showTimePicker = () => {
+    setPickerMode("time");
+  };
+
+  const hidePicker = () => {
+    setPickerMode(null);
+  };
+
+  const handleConfirm = date => {
+    console.log("A date has been picked: ", date);
+    hidePicker();
+  };
+
+
+  const toggleTrueFalse = () => setIsSwitchOn(!isSwitchOn);
+
     return (
       <ScrollView
         showsVerticalScrollIndicator={false}
@@ -40,10 +55,29 @@ export default class DetailsScreen extends Component {
             </View>
             <View style={styles.secondContainer }>
               <Text style={ styles.secondHeaderText }>Deadline</Text>
-              <TextInput
-                style={ styles.smallInput }
-                placeholder='0.00'
-              />
+              <View style={{
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                width: '60%'
+              }}>
+                 <TouchableWithoutFeedback
+                onPress={showDatePicker}
+                >
+                <Text style={ styles.smallInput2 }>Date</Text>
+              </TouchableWithoutFeedback>
+                <TouchableWithoutFeedback 
+                  onPress={showTimePicker}
+                  >
+                  <Text style={ styles.smallInput2 }>Time</Text>
+                </TouchableWithoutFeedback>
+                <DateTimePickerModal
+                  isVisible={pickerMode !== null}
+                  mode={pickerMode}
+                  onConfirm={handleConfirm}
+                  onCancel={hidePicker}
+                  date={new Date()}
+                />
+              </View>
             </View>
             <View style={styles.secondContainer }>
               <Text style={ styles.secondHeaderText }>Do you want insurance on this errand?</Text>
@@ -53,8 +87,8 @@ export default class DetailsScreen extends Component {
                 marginBottom: 30
               }}>
                 <Switch 
-                  onValueChange={(isSwitchOn )=> this.setState({isSwitchOn})}
-                  value={this.state.isSwitchOn}
+                  onValueChange={() => toggleTrueFalse()}
+                  value={isSwitchOn}
                   trackColor={
                     {
                       false: '#BEBEBE',
@@ -70,8 +104,7 @@ export default class DetailsScreen extends Component {
       </ScrollView>
     )
   }
-  
-}
+
 
 const styles = StyleSheet.create({
   mainContainer: {
@@ -124,5 +157,19 @@ const styles = StyleSheet.create({
     marginTop: 10,
     paddingVertical: 10,
     paddingLeft: 15
+  },
+  smallInput2: {
+    borderWidth: 1,
+    borderColor: '#D9EBED',
+    borderRadius: 10,
+    width: '70%',
+    marginTop: 10,
+    paddingVertical: 15,
+    paddingLeft: 15,
+    marginRight: 50,
+    fontFamily: 'muli-regular',
+    color: '#BEBEBE'
   }
 })
+
+export default DetailsScreen

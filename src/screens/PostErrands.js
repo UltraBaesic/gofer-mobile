@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity, Image } from 'react-native';
+import { View, Text, TouchableOpacity, Image, Modal } from 'react-native';
 import { ProgressSteps, ProgressStep } from 'react-native-progress-steps';
 import CategoryScreen from '../screens/CategoryScreen'
 import LocationScreen from '../screens/LocationScreen'
@@ -15,6 +15,20 @@ class PostErrands extends Component {
     }
   };
 
+
+  state = {
+    modalVisible: false,
+    modalVisible1: false
+  };
+
+  setModalVisible(visible) {
+    this.setState({modalVisible: visible});
+  }
+
+  setModalVisible2(visible) {
+    this.setState({modalVisible1: visible});
+  }
+
   onNextStep = () => {
     console.log('called next step');
   };
@@ -24,7 +38,7 @@ class PostErrands extends Component {
   };
 
   onSubmitSteps = () => {
-    console.log('called on submit step.');
+    this.setModalVisible(true);
   };
 
   render() {
@@ -63,9 +77,208 @@ class PostErrands extends Component {
       marginTop: 20
     };
 
+    const { navigation } = this.props
+
+    const routeToErrand = () => {
+      this.setModalVisible2(!this.state.modalVisible1);
+      this.setModalVisible(!this.state.modalVisible);
+      navigation.navigate('Errand')
+    }
+
     return (
       <View style={{ flex: 1, marginTop: 10, backgroundColor: '#ffffff' }}>
-         <TouchableOpacity onPress={() => this.props.navigation.navigate('Feed')}>
+        <Modal
+          animationType="slide"
+          transparent={true}
+          visible={this.state.modalVisible}
+          onRequestClose={() => {}}>
+          <View style={{
+            width: '100%',
+            height: '100%',
+            backgroundColor: 'rgba(0, 0, 0, 0.4)',
+            paddingHorizontal: 30,
+            paddingVertical: 100
+          }}>
+            <View style={{
+              backgroundColor: '#ffffff',
+              height: '65%',
+              margin: 'auto',
+              borderRadius: 20,
+              paddingVertical: 15,
+              paddingHorizontal: 20,
+              position: 'relative'
+            }}>
+              <TouchableOpacity
+                onPress={() => {
+                  this.setModalVisible(!this.state.modalVisible);
+                }}
+                style={{
+                  backgroundColor: '#ffffff',
+                  padding: 15,
+                  borderRadius: 50,
+                  elevation: 5,
+                  position: 'absolute',
+                  right: -20,
+                  top: -25
+                }}
+                >
+                <Image
+                  source={ require('../../assets/close.png') }
+                  style={{
+                    width: 20,
+                    height: 20,
+                    resizeMode: 'contain'
+                  }}
+                ></Image>
+              </TouchableOpacity>
+              <Text style={{
+                marginTop: 40
+              }}>
+                <Text style={{
+                  fontFamily: 'muli-regular',
+                  color: '#0086B9',
+                  fontSize: 16
+                }}>Send Public </Text>
+                <Text
+                  style={{
+                    fontFamily: 'muli-regular',
+                    color: '#6B6B6B',
+                    fontSize: 16
+                  }}
+                >allows anyone to run this errand, </Text>
+                <Text
+                style={{
+                  fontFamily: 'muli-regular',
+                  color: '#0086B9',
+                  fontSize: 16
+                }}
+                >Send Gofer </Text>
+                <Text
+                style={{
+                  fontFamily: 'muli-regular',
+                  color: '#6B6B6B',
+                  fontSize: 16,
+                  lineHeight: 24
+                }}>allows only Gofer to run this errand.</Text>
+              </Text>
+              <View style={{
+                marginTop: 70,
+                flexDirection: 'row',
+                justifyContent: 'space-between'
+              }}>
+                <TouchableOpacity
+                  onPress={() => {this.setModalVisible2(true)}}
+                  style={{
+                    borderColor: '#0086B9',
+                    borderWidth: 1,
+                    paddingVertical: 12,
+                    paddingHorizontal: 13,
+                    borderRadius: 10
+                  }}
+                >
+                  <Text
+                    style={{
+                      color: '#0086B9',
+                      fontSize: 16,
+                      fontFamily: 'muli-semi'
+                    }}
+                  >Send Gopher</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => {this.setModalVisible2(true)}}
+                  style={{
+                    paddingVertical: 12,
+                    paddingHorizontal: 16,
+                    borderRadius: 10,
+                    backgroundColor: '#0086B9',
+                  }}
+                >
+                  <Text
+                    style={{
+                      fontSize: 16,
+                      fontFamily: 'muli-semi',
+                      color: '#ffffff'
+                    }}
+                  >Send Public</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </View>
+        </Modal>
+        <Modal
+          animationType="fade"
+          transparent={false}
+          visible={this.state.modalVisible1}
+          onRequestClose={() => {}}>
+          <View style={{
+            paddingHorizontal: 25,
+            paddingVertical: 30,
+          }}>
+            <TouchableOpacity onPress={() => {routeToErrand()}}>
+              <Image
+                source={ require('../../assets/close.png')}
+                style={{
+                  width: 20,
+                  height: 20,
+                  resizeMode: 'contain'
+                }}
+              ></Image>
+            </TouchableOpacity>
+            <View
+              style={{
+                justifyContent: 'center',
+                alignItems: 'center',
+                marginTop: 50
+              }}
+            >
+              <Text
+                style={{
+                  color: '#6B6B6B',
+                  fontSize: 22,
+                  fontFamily: 'muli-semi'
+                }}
+              >Errand Posted Successfully</Text>
+              <Image
+                source={ require('../../assets/correct.png') }
+                style={{
+                  width: 120,
+                  height: 120,
+                  marginVertical: 50,
+                  resizeMode: 'contain'
+                }}
+              ></Image>
+              <Text
+                 style={{
+                  color: '#6B6B6B',
+                  fontSize: 18,
+                  fontFamily: 'muli-regular',
+                  marginVertical: 20
+                }}
+              >Waiting for people to bid...</Text>
+              <TouchableOpacity
+                onPress={() => {routeToErrand()}}
+                style={{
+                  paddingVertical: 12,
+                  paddingHorizontal: 26,
+                  borderRadius: 10,
+                  backgroundColor: '#0086B9',
+                }}
+              >
+                <Text
+                  style={{
+                    fontSize: 16,
+                    fontFamily: 'muli-bold',
+                    color: '#ffffff'
+                  }}
+                >Track Errand</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </Modal>
+        <View style={{
+          flexDirection: 'row'
+        }}>
+        <TouchableOpacity onPress={() => this.props.navigation.navigate('Feed')}>
           <Image
             source={require('../../assets/back.png')}
             style={{
@@ -76,6 +289,15 @@ class PostErrands extends Component {
             }}
           ></Image>
         </TouchableOpacity>
+        <Text style={{
+          fontFamily: 'muli-semi',
+          fontSize: 20,
+          marginTop: 25,
+          marginLeft: 50,
+          alignSelf: 'center',
+          color: '#6B6B6B'
+        }}>Post Errands</Text>
+        </View>
         <ProgressSteps {...progressStepsStyle}>
           <ProgressStep
             label='Catetory'
