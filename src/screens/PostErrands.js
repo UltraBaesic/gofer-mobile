@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { View, Text, TouchableOpacity, Image } from 'react-native';
 import { ProgressSteps, ProgressStep } from 'react-native-progress-steps';
 import CategoryScreen from '../screens/CategoryScreen'
+import LocationScreen from '../screens/LocationScreen'
+import DetailsScreen from '../screens/DetailsScreen'
+import ReviewScreen from '../screens/ReviewScreen'
 
 class PostErrands extends Component {
 
@@ -54,7 +57,7 @@ class PostErrands extends Component {
       fontWeight: 'bold',
       borderColor: '#0086B9',
       borderWidth: 1,
-      paddingHorizontal: 30,
+      paddingHorizontal: 40,
       paddingVertical: 10,
       borderRadius: 10,
       marginTop: 20
@@ -95,8 +98,8 @@ class PostErrands extends Component {
             nextBtnTextStyle={buttonNextStyle}
             previousBtnTextStyle={buttonPreviousStyle}
           >
-            <View style={{ alignItems: 'center' }}>
-              <Text>This is the content within step 2!</Text>
+            <View>
+              <LocationScreen />
             </View>
           </ProgressStep>
           <ProgressStep
@@ -107,8 +110,8 @@ class PostErrands extends Component {
             nextBtnTextStyle={buttonNextStyle}
             previousBtnTextStyle={buttonPreviousStyle}
           >
-            <View style={{ alignItems: 'center' }}>
-              <Text>This is the content within step 3!</Text>
+            <View>
+              <DetailsScreen />
             </View>
           </ProgressStep>
           <ProgressStep
@@ -119,8 +122,8 @@ class PostErrands extends Component {
             nextBtnTextStyle={buttonNextStyle}
             previousBtnTextStyle={buttonPreviousStyle}
           >
-            <View style={{ alignItems: 'center' }}>
-              <Text>This is the content within step 5!</Text>
+            <View>
+              <ReviewScreen />
             </View>
           </ProgressStep>
         </ProgressSteps>
