@@ -334,13 +334,13 @@ const FeedScreen = ({ navigation }) => {
           ></Image>
           <View>
             <View style={{ flexDirection: 'row', marginLeft: 10, position: 'absolute', bottom: 30 }}>
-              <View>
+              <TouchableOpacity onPress={() => navigation.navigate('Errand')}>
                 <Image
                   source={ require('../../assets/future.png')}
                   style={ styles.navIcons }
                 ></Image>
                 <Text style={ styles.iconText }>Errands</Text>
-              </View>
+              </TouchableOpacity>
               <View style={{ marginLeft: 33 }}>
                 <Image
                   source={ require('../../assets/wallet.png')}

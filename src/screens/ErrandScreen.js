@@ -1,6 +1,7 @@
 import React from 'react'
 import { View, ScrollView, Text, Image, TouchableOpacity, Animated, Dimensions, TouchableWithoutFeedback, StyleSheet } from 'react-native'
 import { Col, Grid, Row } from 'react-native-easy-grid';
+import OutgoingErrand from '../components/OutgoingErrand';
 
 const { width } = Dimensions.get('window')
 
@@ -113,7 +114,7 @@ export default class ErrandScreen extends React.Component {
                   position: 'absolute',
                   width: '33%',
                   height: '100%',
-                  top: 9,
+                  top: 11,
                   left: 0,
                   borderBottomWidth: 3,
                   borderBottomColor: '#0086B9',
@@ -200,7 +201,7 @@ export default class ErrandScreen extends React.Component {
               onLayout={event => this.setState({ translateY: event.nativeEvent.layout.height})}
             >
         <View>
-          
+          <OutgoingErrand />
         </View>
       </Animated.View>
       <Animated.View
