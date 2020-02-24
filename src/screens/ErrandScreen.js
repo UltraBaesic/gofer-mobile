@@ -2,6 +2,8 @@ import React from 'react'
 import { View, ScrollView, Text, Image, TouchableOpacity, Animated, Dimensions, TouchableWithoutFeedback, StyleSheet } from 'react-native'
 import { Col, Grid, Row } from 'react-native-easy-grid';
 import OutgoingErrand from '../components/OutgoingErrand';
+import BidsComponent from '../components/BidsComponent';
+import CompletedComponent from '../components/CompletedComponent';
 
 const { width } = Dimensions.get('window')
 
@@ -210,22 +212,28 @@ export default class ErrandScreen extends React.Component {
           transform: [
             {
               translateX: translateTabTwo
+            },
+            {
+              translateY: -850
             }
           ]
           }}
           >
-        
+        <BidsComponent />
       </Animated.View>
       <Animated.View
         style={{
           transform: [
             {
               translateX: translateTabThree
+            },
+            {
+              translateY: -1680
             }
           ]
         }}
       >
-       
+       <CompletedComponent />
       </Animated.View>
       </ScrollView>
     </View>
