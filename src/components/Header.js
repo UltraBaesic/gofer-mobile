@@ -25,7 +25,8 @@ const styles = StyleSheet.create({
   header: {
     paddingVertical: 10,
     backgroundColor: '#ffffff',
-    paddingTop: 40,
+    marginTop: 40,
+    paddingVertical: 20,
     paddingHorizontal: 20,
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -38,7 +39,7 @@ const styles = StyleSheet.create({
     width: 120
   },
   logoText: {
-    fontSize: 25,
+    fontSize: 28,
     color: '#0086B9',
     marginTop: -4,
     fontFamily: 'muli-regular'

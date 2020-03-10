@@ -242,8 +242,8 @@ export default class ErrandScreen extends React.Component {
 
 const styles = StyleSheet.create({
   icon: {
-    marginVertical: 30,
-    marginTop: 30,
+    marginTop: 60,
+    marginBottom: 30,
     marginHorizontal: 20,
     width: 20,
     height: 20
@@ -252,7 +252,6 @@ const styles = StyleSheet.create({
     fontSize: 25,
     color: '#6B6B6B',
     fontFamily: 'muli-regular',
-    marginTop: 20,
     textAlign: 'center',
     width: '65%'
   },
@@ -260,7 +259,7 @@ const styles = StyleSheet.create({
     width: '100%',
     marginLeft: 'auto',
     marginRight: 'auto',
-    height: 57,
+    marginTop: 50,
     position: 'relative',
     backgroundColor: '#ffffff'
   },

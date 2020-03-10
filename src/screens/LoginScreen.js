@@ -9,7 +9,10 @@ const RegisterScreen = ({ navigation }) => {
         style={ styles.body }
       >
         <View style={ styles.header }>
-        <TouchableOpacity onPress={() => navigation.navigate('Welcome')}>
+        <TouchableOpacity
+          activeOpacity={1}
+          onPress={() => navigation.navigate('Welcome')}
+        >
           <Image
             source={require('../../assets/back.png')}
             style={ styles.icon }
@@ -39,13 +42,16 @@ const RegisterScreen = ({ navigation }) => {
               secureTextEntry={true}
             >
             </TextInput>
-            <TouchableOpacity onPress={() => navigation.navigate('Forgot')}>
+            <TouchableOpacity
+              activeOpacity={1}
+              onPress={() => navigation.navigate('Forgot')}>
               <Text style={ styles.forgotPassword }> Forgot Password?</Text>
             </TouchableOpacity>
           </View>
           <TouchableOpacity 
              style={ styles.submitButton }
              onPress={() => navigation.navigate('Feed')}
+             activeOpacity={1}
           >
             <Text style={ styles.submitText }>Login</Text>
           </TouchableOpacity>
@@ -79,8 +85,8 @@ const RegisterScreen = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   icon: {
-    marginVertical: 30,
-    marginTop: 40,
+    marginTop: 70,
+    marginBottom: 30,
     marginHorizontal: 20,
     width: 20,
     height: 20

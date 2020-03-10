@@ -9,7 +9,9 @@ const LoginScreen = ({ navigation}) => {
         style={ styles.body }
       >
       <View style={ styles.header }>
-        <TouchableOpacity onPress={() => navigation.navigate('Welcome')}>
+        <TouchableOpacity
+          activeOpacity={1}
+          onPress={() => navigation.navigate('Welcome')}>
           <Image
             source={require('../../assets/back.png')}
             style={ styles.icon }
@@ -68,8 +70,9 @@ const LoginScreen = ({ navigation}) => {
             </TextInput>
         </View>
         <TouchableOpacity 
-             style={ styles.submitButton }
-          >
+          style={ styles.submitButton }
+          activeOpacity={1}
+        >
             <Text style={ styles.submitText }>Register</Text>
           </TouchableOpacity>
           <View style={ styles.socialText }>
@@ -102,9 +105,9 @@ const LoginScreen = ({ navigation}) => {
 
 const styles = StyleSheet.create({
   icon: {
-    marginVertical: 30,
+    marginTop: 60,
+    marginBottom: 30,
     marginHorizontal: 20,
-    marginTop: 40,
     width: 20,
     height: 20
   },

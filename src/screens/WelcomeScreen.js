@@ -1,6 +1,7 @@
 import React from 'react'
 import { StyleSheet, Image, TouchableOpacity, View, Text } from 'react-native'
 
+
 const WelcomeScreen = ({ navigation }) => {
 
   return(
@@ -15,12 +16,14 @@ const WelcomeScreen = ({ navigation }) => {
             <TouchableOpacity
               onPress={() => navigation.navigate('Register')}
               style={ styles.registerButton }
+              activeOpacity={1}
             >
               <Text style={ styles.registerText }>Register</Text>
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => navigation.navigate('Login')}
               style={ styles.loginButton }
+              activeOpacity={1}
             >
               <Text style={ styles.loginText }>Login</Text>
             </TouchableOpacity>
@@ -44,11 +47,14 @@ const styles = StyleSheet.create({
   },
   bodyStyle: {
     marginVertical: 40,
+    position: 'relative',
+    flex: 1
     
   },
   buttonContainer: {
-    paddingTop: 340,
     paddingHorizontal: 30,
+    position: 'absolute',
+    bottom: 0,
     flexDirection: "row",
     justifyContent: "space-between",
     
@@ -60,6 +66,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#0086B9",
     borderRadius: 15,
     borderWidth: 0,
+    marginRight: 20
   },
   loginButton: {
     paddingVertical: 15,

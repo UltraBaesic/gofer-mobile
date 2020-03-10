@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { View, ScrollView, Text, Image, StyleSheet, TouchableOpacity, TouchableWithoutFeedback } from 'react-native'
+import { View, ScrollView, Text, Image, StyleSheet, TouchableOpacity } from 'react-native'
 import { Col, Row, Grid } from 'react-native-easy-grid'
 import Header from '../components/Header'
 
@@ -319,7 +319,10 @@ const FeedScreen = ({ navigation }) => {
         <View style={{ marginTop: -120 }}>
         <View style={ styles.buttonNavigation }>
           <View>
-            <TouchableOpacity style={ styles.blueContainer} onPress={() => navigation.navigate('Post')}>
+            <TouchableOpacity
+              activeOpacity={1}
+              style={ styles.blueContainer}
+              onPress={() => navigation.navigate('Post')}>
               <Image
                 source={ require('../../assets/button-plus.png') }
                 style={ styles.buttonIcon }
@@ -334,7 +337,10 @@ const FeedScreen = ({ navigation }) => {
           ></Image>
           <View>
             <View style={{ flexDirection: 'row', marginLeft: 10, position: 'absolute', bottom: 30 }}>
-              <TouchableOpacity onPress={() => navigation.navigate('Errand')}>
+              <TouchableOpacity
+                activeOpacity={1}
+                onPress={() => navigation.navigate('Errand')}
+              >
                 <Image
                   source={ require('../../assets/future.png')}
                   style={ styles.navIcons }

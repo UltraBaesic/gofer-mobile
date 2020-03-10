@@ -8,7 +8,10 @@ const ResetPassword = ({ navigation }) => {
       style={ styles.body }
     >
       <View style={ styles.header }>
-        <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('Login')}
+          activeOpacity={1}
+        >
           <Image
             source={require('../../assets/back.png')}
             style={ styles.icon }
@@ -40,6 +43,7 @@ const ResetPassword = ({ navigation }) => {
           <View style={{ paddingHorizontal: 30, marginTop: 70 }}>
             <TouchableOpacity 
               style={ styles.submitButton }
+              activeOpacity={1}
             >
               <Text style={ styles.submitText }>Submit</Text>
             </TouchableOpacity>
@@ -59,8 +63,8 @@ const styles = StyleSheet.create({
     borderColor: '#ffffff'
   },
   icon: {
-    marginVertical: 30,
-    marginTop: 40,
+    marginTop: 60,
+    marginBottom: 30,
     marginHorizontal: 20,
     width: 20,
     height: 20
