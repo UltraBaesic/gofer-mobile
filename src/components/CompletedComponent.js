@@ -8,7 +8,13 @@ const CompletedComponent = () => {
       showsVerticalScrollIndicator={false}
       style={ styles.body }
     >
-     <Row style={ styles.mainContainer }>
+      <View>
+        <Row>
+          <Image
+              source={ require('../../assets/success.png') }
+              style={ styles.status }
+            ></Image>
+          <Row style={ styles.mainContainer }>
           <Col style={ styles.smallCol }>
             <Image
               source={ require('../../assets/avatar2.jpg') }
@@ -60,6 +66,8 @@ const CompletedComponent = () => {
             </View>
           </Col>
         </Row>
+        </Row>
+      </View>
         <Row style={ styles.mainContainer }>
           <Col style={ styles.smallCol }>
             <Image
@@ -171,9 +179,6 @@ const CompletedComponent = () => {
 }
 
 const styles = StyleSheet.create({
-  body: {
-    marginBottom: 90
-  },
   mainContainer: {
     paddingHorizontal: 10,
     marginHorizontal: 3,
@@ -232,7 +237,8 @@ const styles = StyleSheet.create({
     height: 11,
     resizeMode: 'contain',
     marginVertical: 2
-  }
+  },
+  
 })
 
 export default CompletedComponent

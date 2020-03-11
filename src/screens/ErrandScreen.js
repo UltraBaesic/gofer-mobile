@@ -1,278 +1,146 @@
 import React from 'react'
-import { View, ScrollView, Text, Image, TouchableOpacity, Animated, Dimensions, TouchableWithoutFeedback, StyleSheet } from 'react-native'
-import { Col, Grid, Row } from 'react-native-easy-grid';
-import OutgoingErrand from '../components/OutgoingErrand';
-import BidsComponent from '../components/BidsComponent';
-import CompletedComponent from '../components/CompletedComponent';
+import { View, Text, StyleSheet, Image, TouchableWithoutFeedback, TouchableOpacity, Dimensions, ScrollView } from 'react-native'
+import { TabView } from 'react-native-tab-view';
+import Animated from 'react-native-reanimated';
+import OutgoingErrand from '../components/OutgoingErrand'
+import BidsComponent from '../components/BidsComponent'
+import CompletedComponent from '../components/CompletedComponent'
 
-const { width } = Dimensions.get('window')
+const FirstRoute = () => (
+  <View>
+    <OutgoingErrand />
+  </View>
+);
+
+const SecondRoute = () => (
+  <View>
+    <BidsComponent />
+  </View>
+);
+
+const ThirdRoute = () => (
+  <View>
+    <CompletedComponent />
+  </View>
+);
 
 export default class ErrandScreen extends React.Component {
   state = {
-    active: 0,
-    xTabOne: 0,
-    xTabTwo: 0,
-    xTabThree: 0,
-    translateX: new Animated.Value(0),
-    translateTabOne: new Animated.Value(0),
-    translateTabTwo: new Animated.Value(width),
-    translateTabThree: new Animated.Value(width),
+    index: 0,
+    routes: [
+      { key: 'first', title: 'Ongoing', active: 0 },
+      { key: 'second', title: 'Bids', active: 1 },
+      { key: 'third', title: 'Completed', active: 2 }
+    ]
+  }
+
+  _handleIndexChange = index => this.setState({ index });
+
+  _renderTabBar = props => {
+    const inputRange = props.navigationState.routes.map((x, i) => i);
+
+    return (
+      <View>
+        <View style={ styles.mainHeader }>
+          <TouchableOpacity 
+            onPress={() => this.props.navigation.navigate('Section')}
+            activeOpacity={1}
+            >
+            <Image
+              source={ require('../../assets/back.png')}
+              style={ styles.headerIcon }
+            ></Image>
+          </TouchableOpacity>
+          <Text style={ styles.headerText }>My Errands</Text>
+        </View>
+      <View style={styles.tabBar}>
+        {props.navigationState.routes.map((route, i) => {
+          const color = Animated.color(
+            Animated.round(
+              Animated.interpolate(props.position, {
+                inputRange,
+                outputRange: inputRange.map(inputIndex =>
+                  inputIndex === i ? 255 : 0
+                ),
+              })
+            ),
+            0,
+            0
+          );
+
+          return (
+            <TouchableOpacity
+              style={styles.tabItem}
+              key={route.key}
+              onPress={() => this.setState({ index: i })}>
+              <Animated.Text
+              style={{
+                fontSize: 16
+              }}>{route.title}</Animated.Text>
+            </TouchableOpacity>
+          );
+        })}
+      </View>
+      </View>
+    );
   };
 
-   constructor(props) {
-    super(props);
-  }
-
-  handleSlide = type => {
-    let { active, translateX, translateTabOne, translateTabTwo, translateTabThree } = this.state
-    Animated.spring(translateX, {
-      toValue: type,
-      duration: 100
-    }).start()
-    if(active === 0){
-      Animated.parallel([
-        Animated.spring(translateTabOne, {
-          toValue: 0,
-          duration: 100
-        }).start(),
-        Animated.spring(translateTabTwo, {
-          toValue: width,
-          duration: 100
-        }).start(),
-        Animated.spring(translateTabThree, {
-          toValue: width,
-          duration: 100
-        }).start()
-      ])
-    } if(active === 1) {
-      Animated.parallel([
-        Animated.spring(translateTabOne, {
-          toValue: -width,
-          duration: 100
-        }).start(),
-        Animated.spring(translateTabTwo, {
-          toValue: 0,
-          duration: 100
-        }).start(),
-        Animated.spring(translateTabThree, {
-          toValue: -width,
-          duration: 100
-        }).start()
-      ])
-    } if(active === 2) {
-      Animated.parallel([
-        Animated.spring(translateTabOne, {
-          toValue: -width,
-          duration: 100
-        }).start(),
-        Animated.spring(translateTabTwo, {
-          toValue: -width,
-          duration: 100
-        }).start(),
-        Animated.spring(translateTabThree, {
-          toValue: -0,
-          duration: 100
-        }).start()
-      ])
+  _renderScene = ({ route }) => {
+    switch (route.key) {
+      case 'first':
+        return <FirstRoute />;
+      case 'second':
+        return <SecondRoute />;
+      case 'third':
+        return <ThirdRoute />;
+      default:
+        return null;
     }
-  }
-
+  };
 
   render() {
-    let { active, xTabOne, xTabTwo, xTabThree, translateX, translateTabOne, translateTabTwo, translateTabThree } = this.state
     return (
-      <View
-        style={{
-          backgroundColor: '#ffffff'
-        }}
-      >
-        <View style={ styles.tabContainer }>
-          <Row>
-            <TouchableOpacity 
-              onPress={() => this.props.navigation.navigate('Errand')}
-              >
-              <Image
-                source={ require('../../assets/back.png')}
-                style={ styles.icon }
-              ></Image>
-            </TouchableOpacity>
-            <Text style={ styles.headerText }>My Errands</Text>
-          </Row>
-        </View>
-          <View style={{
-              width: '100%',
-              height: 56,
-              position: 'relative',
-              marginTop: 10
-              }}>
-            <View 
-              style={{
-                flexDirection: 'row',
-                marginTop: 20
-              }}
-              >
-              <Animated.View
-                style={{
-                  position: 'absolute',
-                  width: '33%',
-                  height: '100%',
-                  top: 11,
-                  left: 0,
-                  borderBottomWidth: 3,
-                  borderBottomColor: '#0086B9',
-                  transform: [
-                    {
-                      translateX
-                    }
-                  ]
-                }}
-              />
-              <TouchableOpacity
-                style={{
-                  flex: 1,
-                  justifyContent: 'space-between',
-                  alignItems: 'center'
-                }}
-                onLayout={event => this.setState({xTabOne: event.nativeEvent.layout.x})}
-                onPress={() => this.setState({ active: 0 }, () => this.handleSlide(xTabOne))}
-              >
-                <Text 
-                  style={{
-                    color: active === 0 ? '#0086B9' : '#6B6B6B',
-                    fontSize: 18,
-                    fontFamily: 'muli-regular',
-                    fontWeight: active === 0 ? 'bold' : '400'
-                  }}>
-                    Ongoing
-                  </Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={{
-                  flex: 1,
-                  justifyContent: 'space-between',
-                  alignItems: 'center'
-                }}
-                onLayout={event => this.setState({xTabTwo: event.nativeEvent.layout.x})}
-                onPress={() => this.setState({ active: 1 }, () => this.handleSlide(xTabTwo))}
-              >
-                <Text 
-                  style={{
-                    color: active === 1 ? '#0086B9' : '#6B6B6B',
-                    fontSize: 18,
-                    fontFamily: 'muli-regular',
-                    fontWeight: active === 1 ? 'bold' : '400'
-                  }}>
-                  Bids
-                </Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={{
-                  flex: 1,
-                  justifyContent: 'space-between',
-                  alignItems: 'center'
-                }}
-                onLayout={event => this.setState({xTabThree: event.nativeEvent.layout.x})}
-                onPress={() => this.setState({ active: 2 }, () => this.handleSlide(xTabThree))}
-              >
-                <Text 
-                  style={{
-                    color: active === 2 ? '#0086B9' : '#6B6B6B',
-                    fontSize: 18,
-                    fontFamily: 'muli-regular',
-                    fontWeight: active === 2 ? 'bold' : '400'
-                  }}>
-                    Completed
-                  </Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-        <ScrollView 
-          style={{ backgroundColor: '#ffffff' }}
-          ref={this.scrollRef}
-          showsVerticalScrollIndicator={false}
-        >
-            <Animated.View
-              style={{
-                marginVertical: 13,
-                transform: [
-                  {
-                    translateX: translateTabOne
-                  }
-                ]
-              }}
-              onLayout={event => this.setState({ translateY: event.nativeEvent.layout.height})}
-            >
-        <View>
-          <OutgoingErrand />
-        </View>
-      </Animated.View>
-      <Animated.View
-        style={{
-          marginVertical: 13,
-          transform: [
-            {
-              translateX: translateTabTwo
-            },
-            {
-              translateY: -850
-            }
-          ]
-          }}
-          >
-        <BidsComponent />
-      </Animated.View>
-      <Animated.View
-        style={{
-          transform: [
-            {
-              translateX: translateTabThree
-            },
-            {
-              translateY: -1680
-            }
-          ]
-        }}
-      >
-       <CompletedComponent />
-      </Animated.View>
-      </ScrollView>
-    </View>
-  )
-  }}
+      <TabView
+        navigationState={this.state}
+        renderScene={this._renderScene}
+        renderTabBar={this._renderTabBar}
+        onIndexChange={this._handleIndexChange}
+      />
+    )
+  }
+}
 
 const styles = StyleSheet.create({
-  icon: {
-    marginTop: 60,
-    marginBottom: 30,
-    marginHorizontal: 20,
+
+  mainHeader: {
+    marginTop: 50,
+    marginVertical: 20,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '64%'
+  },
+
+  headerIcon: {
     width: 20,
-    height: 20
+    height: 20,
+    marginHorizontal: 10
+  },
+  tabBar: {
+    flexDirection: 'row',
+    backgroundColor: 'transparent',
+    marginTop: -12,
+    elevation: 2
+  },
+  tabItem: {
+    flex: 1,
+    alignItems: 'center',
+    padding: 16,
+    backgroundColor: 'transparent'
   },
   headerText: {
-    fontSize: 25,
-    color: '#6B6B6B',
-    fontFamily: 'muli-regular',
-    textAlign: 'center',
-    width: '65%'
-  },
-  tabContainer: {
-    width: '100%',
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    marginTop: 50,
-    position: 'relative',
-    backgroundColor: '#ffffff'
-  },
-  innerContainer: {
-    flexDirection: 'row',
-    marginVertical: 19
-  },
-  tabSection: {
-    flex: 1,
-    justifyContent: 'space-between',
-    alignItems: 'center'
-  },
-  tabText: {
-    color: 'red'
+    fontSize: 20,
+    color: '#6E6C6C',
+    marginTop: -5
   }
+
 })

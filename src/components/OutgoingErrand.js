@@ -8,13 +8,21 @@ const OutgoingErrand = () => {
       showsVerticalScrollIndicator={false}
       style={ styles.body }
     >
+      <View>
+      <Row>
+        <Image
+          source={ require('../../assets/completed.png') }
+          style={ styles.status }
+        ></Image>
+        <Text style={ styles.statusText }>Benita is running this errand</Text>
+      </Row>
      <Row style={ styles.mainContainer }>
-          <Col style={ styles.smallCol }>
-            <Image
-              source={ require('../../assets/avatar2.jpg') }
-              style={ styles.avatarImage }
-            ></Image>
-          </Col>
+        <Col style={ styles.smallCol }>
+          <Image
+            source={ require('../../assets/avatar2.jpg') }
+            style={ styles.avatarImage }
+          ></Image>
+        </Col>
           <Col>
             <View>
               <View style={ styles.detailsHeader }>
@@ -60,6 +68,16 @@ const OutgoingErrand = () => {
             </View>
           </Col>
         </Row>
+      </View>
+
+      <View>
+        <Row>
+          <Image
+            source={ require('../../assets/completed.png') }
+            style={ styles.status }
+          ></Image>
+          <Text style={ styles.statusText }>You are running this errand</Text>
+        </Row>
         <Row style={ styles.mainContainer }>
           <Col style={ styles.smallCol }>
             <Image
@@ -95,6 +113,16 @@ const OutgoingErrand = () => {
             </View>
           </Col>
         </Row>
+      </View>
+      
+      <View>
+        <Row>
+          <Image
+            source={ require('../../assets/completed.png') }
+            style={ styles.status }
+          ></Image>
+          <Text style={ styles.statusText }>You are running this errand</Text>
+        </Row>
         <Row style={ styles.mainContainer }>
           <Col style={ styles.smallCol }>
             <Image
@@ -125,10 +153,20 @@ const OutgoingErrand = () => {
                 <Text style={ styles.smallText }>{'\u20A6'}</Text>
                 <Text style={ styles.smallText }>2,000</Text>
               </View>
-              <Text style={ styles.time }>Pick-up &amp; Delivery</Text>
+              <Text style={ styles.time }>Artisan</Text>
               </View>
             </View>
           </Col>
+        </Row>
+      </View>
+
+      <View>
+        <Row>
+          <Image
+            source={ require('../../assets/completed.png') }
+            style={ styles.status }
+          ></Image>
+          <Text style={ styles.statusText }>You are running this errand</Text>
         </Row>
         <Row style={ styles.mainContainer }>
           <Col style={ styles.smallCol }>
@@ -151,7 +189,6 @@ const OutgoingErrand = () => {
                     <Text style={ styles.time }>Ajah, Lagos</Text>
                   </View>
                 </View>
-                <Text style={ styles.time }>2 hrs to go</Text>
               </View>
               <View style={ styles.textContainer }>
                 <Text style={ styles.avatarName }>I am in Ajah, i need someone to help me pick up my clothes from my friend in Ikeja Along before 6:00pm today.</Text>
@@ -161,19 +198,17 @@ const OutgoingErrand = () => {
                 <Text style={ styles.smallText }>{'\u20A6'}</Text>
                 <Text style={ styles.smallText }>2,000</Text>
               </View>
-              <Text style={ styles.time }>Pick-up &amp; Delivery</Text>
+              <Text style={ styles.time }>Artisan</Text>
               </View>
             </View>
           </Col>
         </Row>
+      </View>
     </ScrollView>
   )
 }
 
 const styles = StyleSheet.create({
-  body: {
-    marginBottom: 90
-  },
   mainContainer: {
     paddingHorizontal: 10,
     marginHorizontal: 3,
@@ -231,7 +266,20 @@ const styles = StyleSheet.create({
     width: 11,
     height: 11,
     resizeMode: 'contain',
-    marginVertical: 2
+    marginVertical: 2,
+    marginTop: 3
+  },
+  status: {
+    marginLeft: 10,
+    resizeMode: 'contain',
+    marginTop: 9
+  },
+  statusText: {
+    paddingLeft: 6,
+    color: '#45804A',
+    fontSize: 13,
+    fontFamily: 'muli-regular',
+    paddingTop: 5
   }
 })
 
